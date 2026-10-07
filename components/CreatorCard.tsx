@@ -1,0 +1,53 @@
+import Image from 'next/image';
+import type { Creator } from '@/lib/creators';
+import { ArrowIcon } from './Icons';
+
+export default function CreatorCard({
+  creator: c,
+  priority,
+  onOpen,
+}: {
+  creator: Creator;
+  priority?: boolean;
+  onOpen: (el: HTMLElement) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={(e) => onOpen(e.currentTarget)}
+      aria-haspopup="dialog"
+      aria-label={`Open ${c.name}'s profile`}
+      className="group relative block aspect-[4/5.4] w-full overflow-hidden rounded-2xl text-left transition-transform duration-500 hover:-translate-y-1 sm:aspect-[4/5.2]"
+      style={{ background: c.theme.bg, color: c.theme.fg }}
+    >
+      <Image
+        src={c.portrait}
+        alt={c.alt}
+        fill
+        priority={priority}
+        unoptimized={c.portrait.endsWith('.svg')}
+        sizes="(min-width:1024px) 280px, 50vw"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      />
+      <span
+        className="absolute left-2.5 top-2.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider sm:left-3 sm:top-3 sm:text-[11px]"
+        style={{ background: c.theme.accent, color: c.theme.accentFg }}
+      >
+        {c.category.split(' & ')[0]}
+      </span>
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 pt-12 text-white sm:p-4 sm:pt-16">
+        <div className="min-w-0">
+          <h3 className="font-display text-lg font-medium leading-tight sm:text-2xl">{c.name}</h3>
+          <p className="mt-0.5 hidden text-sm text-white/75 sm:block">{c.tagline}</p>
+        </div>
+        <span
+          className="grid h-8 w-8 shrink-0 place-items-center rounded-full transition group-hover:translate-x-0.5 sm:h-9 sm:w-9"
+          style={{ background: c.theme.accent, color: c.theme.accentFg }}
+          aria-hidden="true"
+        >
+          <ArrowIcon className="h-4 w-4" />
+        </span>
+      </div>
+    </button>
+  );
+}
