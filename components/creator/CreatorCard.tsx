@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import type { Creator } from '@/lib/creators';
-import { ArrowIcon } from './Icons';
-import { useTranslation } from './I18nProvider';
+import type { Creator } from '@/types/creator';
+import { ArrowIcon } from '@/components/ui/Icons';
+import { useTranslation } from '@/providers/I18nProvider';
 
 export default function CreatorCard({
   creator: c,

@@ -14,11 +14,23 @@ npm run build && npm start
 
 ## Structure
 
-- `locales/en.json` holds every user-facing string, including each creator's bio, tags and posts.
-- `lib/i18n.ts` holds the locale config and a typed `t()`; `components/I18nProvider.tsx` exposes `useTranslation()`.
-- `lib/creators.ts` holds language-neutral creator data (name, handle, portrait, stats, colours). Add an object here and a matching `creators.<id>` block in the JSON to add a creator.
-- `components/` holds Header, Hero, Showcase (state), CreatorCard, CreatorProfile (sheet/modal), TelegramCTA, Footer.
-- `public/creators/` holds the portraits.
+```
+app/                 Routes, metadata, sitemap, robots, social card
+components/
+  layout/            Header, Footer
+  sections/          Hero, Showcase, TelegramCTA
+  creator/           CreatorCard, CreatorProfile (sheet / modal)
+  ui/                Shared primitives (icons)
+providers/           AppProviders, I18nProvider (useTranslation), MotionProvider
+hooks/               useModal (scroll lock, Escape, focus trap), useMediaQuery
+data/                Language-neutral creator data (name, handle, portrait, colours, stats)
+types/               Shared TypeScript types
+lib/                 i18n core, site config, constants
+locales/             en.json: every user-facing string, including creator copy
+public/creators/     Portraits
+```
+
+To add a creator: add an entry in `data/creators.ts`, a matching `creators.<id>` block in `locales/en.json`, and a portrait in `public/creators/`.
 
 ## Configure
 

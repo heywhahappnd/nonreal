@@ -1,8 +1,8 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Showcase from '@/components/Showcase';
-import TelegramCTA from '@/components/TelegramCTA';
-import Footer from '@/components/Footer';
+import Header from '@/components/layout/Header';
+import Hero from '@/components/sections/Hero';
+import Showcase from '@/components/sections/Showcase';
+import TelegramCTA from '@/components/sections/TelegramCTA';
+import Footer from '@/components/layout/Footer';
 import { createTranslator, defaultLocale, getMessages } from '@/lib/i18n';
 
 export default function Home() {

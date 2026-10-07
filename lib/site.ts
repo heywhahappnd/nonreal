@@ -1,5 +1,5 @@
-import { getCreators } from './creators';
-import { createTranslator, type Messages } from './i18n';
+import { getCreators } from '@/data/creators';
+import { createTranslator, type Messages } from '@/lib/i18n';
 
 export const SITE_NAME = 'Nonreal';
 

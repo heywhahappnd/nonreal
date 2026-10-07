@@ -1,7 +1,8 @@
 'use client';
 import { createContext, useContext, useMemo } from 'react';
 import { createTranslator, getMessages, type Locale, type Translate } from '@/lib/i18n';
-import { getCreators, type Creator } from '@/lib/creators';
+import { getCreators } from '@/data/creators';
+import type { Creator } from '@/types/creator';
 
 type I18n = { locale: Locale; t: Translate; creators: Creator[] };
 

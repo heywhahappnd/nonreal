@@ -1,10 +1,10 @@
 'use client';
 import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import type { Creator } from '@/lib/creators';
-import CreatorCard from './CreatorCard';
-import CreatorProfile from './CreatorProfile';
-import { useTranslation } from './I18nProvider';
+import type { Creator } from '@/types/creator';
+import CreatorCard from '@/components/creator/CreatorCard';
+import CreatorProfile from '@/components/creator/CreatorProfile';
+import { useTranslation } from '@/providers/I18nProvider';
 
 export default function Showcase() {
   const { t, creators } = useTranslation();

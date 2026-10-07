@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
-import { TELEGRAM_URL } from '@/lib/creators';
-import { TelegramIcon } from './Icons';
-import { useTranslation } from './I18nProvider';
+import { TELEGRAM_URL } from '@/lib/constants';
+import { TelegramIcon } from '@/components/ui/Icons';
+import { useTranslation } from '@/providers/I18nProvider';
 
 export default function TelegramCTA() {
   const { t, creators } = useTranslation();

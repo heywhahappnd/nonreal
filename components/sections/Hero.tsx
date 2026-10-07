@@ -1,9 +1,9 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { TELEGRAM_URL } from '@/lib/creators';
-import { ArrowIcon, TelegramIcon } from './Icons';
-import { useTranslation } from './I18nProvider';
+import { TELEGRAM_URL } from '@/lib/constants';
+import { ArrowIcon, TelegramIcon } from '@/components/ui/Icons';
+import { useTranslation } from '@/providers/I18nProvider';
 
 const rise = (i: number) => ({
   initial: { opacity: 0, y: 24 },

@@ -1,5 +1,5 @@
 'use client';
-import { useTranslation } from './I18nProvider';
+import { useTranslation } from '@/providers/I18nProvider';
 
 export default function Footer() {
   const { t } = useTranslation();

@@ -1,60 +1,22 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { TELEGRAM_URL, type Creator } from '@/lib/creators';
-import { CloseIcon, TelegramIcon } from './Icons';
-import { useTranslation } from './I18nProvider';
-
-const FOCUSABLE = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])';
-
-function useIsDesktop() {
-  const [desktop, setDesktop] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)');
-    const update = () => setDesktop(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-  return desktop;
-}
+import { TELEGRAM_URL } from '@/lib/constants';
+import type { Creator } from '@/types/creator';
+import { CloseIcon, TelegramIcon } from '@/components/ui/Icons';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useModal } from '@/hooks/useModal';
+import { useTranslation } from '@/providers/I18nProvider';
 
 export default function CreatorProfile({ creator, onClose }: { creator: Creator | null; onClose: () => void }) {
   const { t } = useTranslation();
   const panel = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const desktop = useIsDesktop();
+  const desktop = useMediaQuery('(min-width: 1024px)');
   const open = creator !== null;
 
-  // Escape to close, focus trap, scroll lock
-  useEffect(() => {
-    if (!open) return;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    const focusTimer = setTimeout(() => panel.current?.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 50);
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') return onClose();
-      if (e.key !== 'Tab' || !panel.current) return;
-      const els = Array.from(panel.current.querySelectorAll<HTMLElement>(FOCUSABLE));
-      if (!els.length) return;
-      const first = els[0];
-      const last = els[els.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-    document.addEventListener('keydown', onKey);
-    return () => {
-      clearTimeout(focusTimer);
-      document.body.style.overflow = prevOverflow;
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [open, onClose]);
+  useModal(open, panel, onClose);
 
   const panelAnim = desktop
     ? { initial: { opacity: 0, y: 24, scale: 0.97 }, animate: { opacity: 1, y: 0, scale: 1 }, exit: { opacity: 0, y: 16, scale: 0.98 } }

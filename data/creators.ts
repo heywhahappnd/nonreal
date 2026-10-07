@@ -1,34 +1,5 @@
-import type { Messages } from './i18n';
-
-export const TELEGRAM_URL = 'https://t.me/+u8ePN7bHkqY0YmVi';
-
-export type Post = {
-  kind: 'quote' | 'stat' | 'note';
-  title: string;
-  body: string;
-  meta: string;
-};
-
-type CreatorId = keyof Messages['creators'];
-
-export type Creator = {
-  id: CreatorId;
-  name: string;
-  handle: string;
-  portrait: string;
-  stats: { followers: string; posts: string; engagement: string };
-  /** Brand colours for the card, tiles and profile accents */
-  theme: { bg: string; fg: string; accent: string; accentFg: string };
-  // Translated copy (from locales/<locale>.json)
-  category: string;
-  tagline: string;
-  bio: string;
-  alt: string;
-  location: string;
-  tags: string[];
-  ask: { q: string; a: string };
-  posts: Post[];
-};
+import type { Messages } from '@/lib/i18n';
+import type { Creator, Post } from '@/types/creator';
 
 /** Language-neutral data. All user-facing text lives in locales/*.json under creators.<id>. */
 type CreatorBase = Pick<Creator, 'id' | 'name' | 'handle' | 'portrait' | 'stats' | 'theme'> & {

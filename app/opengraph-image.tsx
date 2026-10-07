@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { getCreators } from '@/lib/creators';
+import { getCreators } from '@/data/creators';
 import { createTranslator, defaultLocale, getMessages } from '@/lib/i18n';
 
 const messages = getMessages(defaultLocale);
