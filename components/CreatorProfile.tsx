@@ -11,7 +11,7 @@ const FOCUSABLE = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"]
 function useIsDesktop() {
   const [desktop, setDesktop] = useState(false);
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
+    const mq = window.matchMedia('(min-width: 1024px)');
     const update = () => setDesktop(mq.matches);
     update();
     mq.addEventListener('change', update);
@@ -63,7 +63,7 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
   return (
     <AnimatePresence>
       {creator && (
-        <div key="profile" className="fixed inset-0 z-50 flex items-end justify-center md:items-center md:p-6">
+        <div key="profile" className="fixed inset-0 z-50 flex items-end justify-center lg:items-center lg:p-6">
           <motion.div
             className="absolute inset-0 bg-ink/60 backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
@@ -85,31 +85,31 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElastic={{ top: 0, bottom: 0.6 }}
             onDragEnd={(_, info) => (info.offset.y > 120 || info.velocity.y > 600) && onClose()}
-            className="relative flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-3xl bg-paper shadow-2xl md:max-h-[86vh] md:max-w-4xl md:flex-row md:rounded-3xl"
+            className="relative flex max-h-[92dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-3xl bg-paper md:max-w-2xl lg:max-h-[86vh] lg:max-w-4xl lg:flex-row lg:rounded-3xl"
           >
-            <div className="absolute left-1/2 top-2 z-10 h-1.5 w-10 -translate-x-1/2 rounded-full bg-white/70 md:hidden" aria-hidden="true" />
+            <div className="absolute left-1/2 top-2 z-10 h-1.5 w-10 -translate-x-1/2 rounded-full bg-white/70 lg:hidden" aria-hidden="true" />
             <button
               type="button"
               onClick={onClose}
               data-autofocus
               aria-label={t('profile.close', { name: creator.name })}
-              className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/65"
+              className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/65"
             >
               <CloseIcon />
             </button>
 
-            <div className="relative h-64 shrink-0 md:h-auto md:min-h-[520px] md:w-[42%]" style={{ background: creator.theme.bg }}>
+            <div className="relative h-64 shrink-0 md:h-80 lg:h-auto lg:min-h-[520px] lg:w-[42%]" style={{ background: creator.theme.bg }}>
               <Image
                 src={creator.portrait}
                 alt={creator.alt}
                 fill
-                sizes="(min-width:768px) 400px, 100vw"
-                className="object-cover object-[50%_30%] md:object-[50%_22%]"
+                sizes="(min-width:1024px) 400px, 100vw"
+                className="object-cover object-[50%_30%] lg:object-[50%_22%]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:hidden" />
             </div>
 
-            <div className="overflow-y-auto overscroll-contain p-5 pb-8 md:w-[58%] md:p-8">
+            <div className="scroll-soft overflow-y-auto overscroll-contain p-5 pb-8 md:p-7 md:pb-9 lg:w-[58%] lg:p-8">
               <span
                 className="inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider"
                 style={{ background: creator.theme.bg, color: creator.theme.accent }}
@@ -138,7 +138,7 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
               </div>
 
               <h4 className="mb-3 mt-6 text-xs font-bold uppercase tracking-[0.16em] text-mute">{t('profile.latestDrops')}</h4>
-              <ul className="-mx-5 flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:auto-rows-fr md:grid-cols-3 md:overflow-visible md:px-0">
+              <ul className="-mx-5 flex snap-x snap-mandatory scroll-px-5 items-stretch gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:auto-rows-fr md:grid-cols-3 md:overflow-visible md:px-0">
                 {creator.posts.map((p) => {
                   const stat = p.kind === 'stat';
                   return (

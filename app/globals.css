@@ -9,3 +9,11 @@ body { @apply bg-paper font-sans text-ink antialiased; -webkit-tap-highlight-col
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Slim scrollbar that stays clear of the dialog's rounded corners */
+@supports not selector(::-webkit-scrollbar) {
+  .scroll-soft { scrollbar-width: thin; scrollbar-color: rgba(20, 18, 15, 0.25) transparent; }
+}
+.scroll-soft::-webkit-scrollbar { width: 8px; }
+.scroll-soft::-webkit-scrollbar-track { background: transparent; margin: 20px 0; }
+.scroll-soft::-webkit-scrollbar-thumb { background: rgba(20, 18, 15, 0.25); border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
