@@ -2,6 +2,7 @@
   "name": "nonreal",
   "version": "1.0.0",
   "private": true,
+  "description": "Nonreal: a mobile-first showcase of four virtual AI creators.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

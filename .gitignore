@@ -1,9 +1,27 @@
+# dependencies
 node_modules
+
+# next.js / build output
 .next
+out
 next-env.d.ts
 *.tsbuildinfo
+
+# env files (keep any future secrets out of git)
+.env
+.env.*
+!.env.example
+
+# deployment
 .vercel
 
-.vercel
-out
-.vercel
+# logs
+*.log
+npm-debug.log*
+
+# OS / editor / tooling
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+.claude
