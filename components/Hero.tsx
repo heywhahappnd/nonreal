@@ -12,11 +12,12 @@ const rise = (i: number) => ({
 
 export default function Hero() {
   return (
-    <section id="top" className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:pt-20 md:pb-16">
-      <motion.p {...rise(0)} className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-mute">
+    <section id="top" aria-labelledby="hero-title" className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:pt-20 md:pb-16">
+      <motion.p {...rise(0)} className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#5C564D]">
         Season 01 · Four voices · Zero humans
       </motion.p>
       <motion.h1
+        id="hero-title"
         {...rise(1)}
         className="max-w-4xl font-display text-[2.9rem] font-medium leading-[1.02] tracking-tight sm:text-7xl md:text-[5.5rem]"
       >
@@ -38,13 +39,13 @@ export default function Hero() {
           rel="noopener noreferrer"
           className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/25 px-7 text-base font-bold transition hover:bg-ink/5"
         >
-          <TelegramIcon className="h-5 w-5" /> Follow on Telegram
+          <TelegramIcon className="h-5 w-5" /> Follow on Telegram<span className="sr-only"> (opens in a new tab)</span>
         </a>
       </motion.div>
       <motion.div {...rise(4)} className="mt-10 flex items-center gap-3">
         <div className="flex -space-x-3">
           {creators.map((c) => (
-            <Image key={c.id} src={c.portrait} alt="" width={48} height={48} priority unoptimized={c.portrait.endsWith('.svg')} className="h-12 w-12 rounded-full border-[3px] border-paper object-cover object-top" />
+            <Image key={c.id} src={c.portrait} alt="" width={48} height={48} priority className="h-12 w-12 rounded-full border-[3px] border-paper object-cover object-top" />
           ))}
         </div>
         <p className="text-sm font-semibold text-mute">2.2M followers across four creators</p>

@@ -15,9 +15,9 @@ export default function Showcase() {
   }, []);
 
   return (
-    <section id="creators" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-10 md:py-16">
+    <section id="creators" aria-labelledby="creators-title" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-10 md:py-16">
       <div className="mb-8 flex items-end justify-between">
-        <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">The lineup</h2>
+        <h2 id="creators-title" className="font-display text-3xl font-medium tracking-tight sm:text-4xl">The lineup</h2>
         <p className="hidden text-sm text-mute sm:block">Tap a creator to step inside</p>
       </div>
       <motion.ul

@@ -17,7 +17,7 @@ export default function CreatorCard({
       onClick={(e) => onOpen(e.currentTarget)}
       aria-haspopup="dialog"
       aria-label={`Open ${c.name}'s profile`}
-      className="group relative block aspect-[4/5.4] w-full overflow-hidden rounded-2xl text-left transition-transform duration-500 hover:-translate-y-1 sm:aspect-[4/5.2]"
+      className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl text-left transition-transform duration-500 hover:-translate-y-1"
       style={{ background: c.theme.bg, color: c.theme.fg }}
     >
       <Image
@@ -25,9 +25,9 @@ export default function CreatorCard({
         alt={c.alt}
         fill
         priority={priority}
-        unoptimized={c.portrait.endsWith('.svg')}
-        sizes="(min-width:1024px) 280px, 50vw"
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+       
+        sizes="(min-width:1024px) 290px, (min-width:640px) 45vw, 50vw"
+        className="object-cover object-[50%_20%] transition-transform duration-700 ease-out group-hover:scale-105"
       />
       <span
         className="absolute left-2.5 top-2.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider sm:left-3 sm:top-3 sm:text-[11px]"

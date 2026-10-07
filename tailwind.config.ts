@@ -7,7 +7,7 @@ const config: Config = {
       colors: {
         paper: '#F4EFE7',
         ink: '#14120F',
-        mute: '#6E675D',
+        mute: '#5C564D',
         line: 'rgba(20,18,15,0.12)',
         tg: '#2AABEE',
       },
