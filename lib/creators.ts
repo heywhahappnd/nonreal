@@ -1,4 +1,4 @@
-export const TELEGRAM_URL = 'https://t.me/nonreal_studio';
+export const TELEGRAM_URL = 'https://t.me/+u8ePN7bHkqY0YmVi';
 
 export type Post = {
   kind: 'quote' | 'stat' | 'note';

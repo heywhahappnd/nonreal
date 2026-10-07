@@ -20,7 +20,7 @@ npm run build && npm start
 
 ## Configure
 
-- Telegram link: `TELEGRAM_URL` in `lib/creators.ts` (currently a placeholder handle).
+- Telegram link: `TELEGRAM_URL` in `lib/creators.ts`.
 - Portraits: the current files are art-directed vector illustrations. To use photographic AI portraits, drop 4:5 images (about 1200×1500 `.jpg` or `.webp`) into `public/creators/` and update `portrait` in the data. Non-SVG files go through `next/image` optimisation automatically.
 
 ## Deploy
