@@ -1,9 +1,14 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { creators } from '@/lib/creators';
+import { getCreators } from '@/lib/creators';
+import { createTranslator, defaultLocale, getMessages } from '@/lib/i18n';
 
-export const alt = 'Nonreal: four virtual creators worth following';
+const messages = getMessages(defaultLocale);
+const t = createTranslator(messages);
+const creators = getCreators(messages);
+
+export const alt = t('meta.title');
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -20,9 +25,9 @@ export default async function Image() {
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 520 }}>
           <div style={{ fontSize: 44, fontWeight: 700 }}>nonreal</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05 }}>Four creators.</div>
-            <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05, color: '#C74B2E' }}>None of them real.</div>
-            <div style={{ fontSize: 28, marginTop: 24, color: '#5C564D' }}>Tech · Travel · Style · Wellness</div>
+            <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05 }}>{t('meta.ogTitle').split('. ')[0] + '.'}</div>
+            <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05, color: '#C74B2E' }}>{t('meta.ogTitle').split('. ')[1]}</div>
+            <div style={{ fontSize: 28, marginTop: 24, color: '#5C564D' }}>{t('meta.ogSubtitle')}</div>
           </div>
         </div>
         <div style={{ display: 'flex', gap: 16, marginLeft: 'auto' }}>

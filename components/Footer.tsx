@@ -1,9 +1,13 @@
+'use client';
+import { useTranslation } from './I18nProvider';
+
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="mx-auto max-w-6xl border-t border-line px-5 py-8 text-sm text-mute">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
-        <p>© 2026 Nonreal Studio. All creators are fictional and AI-generated.</p>
-        <p>Made with care, not with humans in front of the camera.</p>
+        <p>{t('footer.legal')}</p>
+        <p>{t('footer.tagline')}</p>
       </div>
     </footer>
   );

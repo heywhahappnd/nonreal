@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { Creator } from '@/lib/creators';
 import { ArrowIcon } from './Icons';
+import { useTranslation } from './I18nProvider';
 
 export default function CreatorCard({
   creator: c,
@@ -11,12 +12,13 @@ export default function CreatorCard({
   priority?: boolean;
   onOpen: (el: HTMLElement) => void;
 }) {
+  const { t } = useTranslation();
   return (
     <button
       type="button"
       onClick={(e) => onOpen(e.currentTarget)}
       aria-haspopup="dialog"
-      aria-label={`Open ${c.name}'s profile`}
+      aria-label={t('card.open', { name: c.name })}
       className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl text-left transition-transform duration-500 hover:-translate-y-1"
       style={{ background: c.theme.bg, color: c.theme.fg }}
     >

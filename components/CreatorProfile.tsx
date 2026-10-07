@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { TELEGRAM_URL, type Creator } from '@/lib/creators';
 import { CloseIcon, TelegramIcon } from './Icons';
+import { useTranslation } from './I18nProvider';
 
 const FOCUSABLE = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
@@ -20,6 +21,7 @@ function useIsDesktop() {
 }
 
 export default function CreatorProfile({ creator, onClose }: { creator: Creator | null; onClose: () => void }) {
+  const { t } = useTranslation();
   const panel = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const desktop = useIsDesktop();
@@ -30,7 +32,7 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const t = setTimeout(() => panel.current?.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 50);
+    const focusTimer = setTimeout(() => panel.current?.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 50);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') return onClose();
       if (e.key !== 'Tab' || !panel.current) return;
@@ -48,7 +50,7 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
     };
     document.addEventListener('keydown', onKey);
     return () => {
-      clearTimeout(t);
+      clearTimeout(focusTimer);
       document.body.style.overflow = prevOverflow;
       document.removeEventListener('keydown', onKey);
     };
@@ -90,7 +92,7 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
               type="button"
               onClick={onClose}
               data-autofocus
-              aria-label={`Close ${creator.name} profile`}
+              aria-label={t('profile.close', { name: creator.name })}
               className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/65"
             >
               <CloseIcon />
@@ -119,7 +121,7 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
               <p id="profile-bio" className="mt-4 leading-relaxed">{creator.bio}</p>
 
               <dl className="mt-5 grid grid-cols-3 divide-x divide-line rounded-2xl border border-line text-center">
-                {[['Followers', creator.stats.followers], ['Posts', creator.stats.posts], ['Engagement', creator.stats.engagement]].map(([k, v]) => (
+                {[[t('profile.followers'), creator.stats.followers], [t('profile.posts'), creator.stats.posts], [t('profile.engagement'), creator.stats.engagement]].map(([k, v]) => (
                   <div key={k} className="flex flex-col-reverse py-3">
                     <dt className="text-[11px] uppercase tracking-wider text-mute">{k}</dt>
                     <dd className="font-display text-xl font-semibold">{v}</dd>
@@ -128,14 +130,14 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
               </dl>
 
               <div className="mt-5 rounded-2xl p-4" style={{ background: creator.theme.bg, color: creator.theme.fg }}>
-                <p className="text-xs font-bold uppercase tracking-wider opacity-70">Ask {creator.name.split(' ')[0]}</p>
+                <p className="text-xs font-bold uppercase tracking-wider opacity-70">{t('profile.ask', { name: creator.name.split(' ')[0] })}</p>
                 <p className="mt-2 text-sm font-semibold">&ldquo;{creator.ask.q}&rdquo;</p>
                 <p className="mt-2 rounded-xl px-3 py-2 text-sm" style={{ background: creator.theme.accent, color: creator.theme.accentFg }}>
                   {creator.ask.a}
                 </p>
               </div>
 
-              <h4 className="mb-3 mt-6 text-xs font-bold uppercase tracking-[0.16em] text-mute">Latest drops</h4>
+              <h4 className="mb-3 mt-6 text-xs font-bold uppercase tracking-[0.16em] text-mute">{t('profile.latestDrops')}</h4>
               <ul className="-mx-5 flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:auto-rows-fr md:grid-cols-3 md:overflow-visible md:px-0">
                 {creator.posts.map((p) => {
                   const stat = p.kind === 'stat';
@@ -161,7 +163,8 @@ export default function CreatorProfile({ creator, onClose }: { creator: Creator 
                 rel="noopener noreferrer"
                 className="mt-6 flex min-h-12 items-center justify-center gap-2 rounded-full bg-tg px-6 font-bold text-white transition hover:brightness-95"
               >
-                <TelegramIcon /> Follow {creator.name.split(' ')[0]} on Telegram<span className="sr-only"> (opens in a new tab)</span>
+                <TelegramIcon /> {t('profile.follow', { name: creator.name.split(' ')[0] })}
+                <span className="sr-only"> {t('common.opensInNewTab')}</span>
               </a>
             </div>
           </motion.div>

@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Nonreal: four virtual creators worth following",
+    "description": "Meet Kai, Mara, Dante and Iris: four virtual AI creators sharing tech, travel, fashion and wellness. Explore their profiles and follow them on Telegram.",
+    "ogTitle": "Four creators. None of them real.",
+    "ogSubtitle": "Tech · Travel · Style · Wellness",
+    "listName": "Nonreal virtual creators"
+  },
+  "common": {
+    "opensInNewTab": "(opens in a new tab)"
+  },
+  "a11y": {
+    "skipToCreators": "Skip to creators",
+    "primaryNav": "Primary",
+    "backToTop": "Nonreal, back to top"
+  },
+  "header": {
+    "creators": "Creators",
+    "join": "Join",
+    "joinLong": "our Telegram channel"
+  },
+  "hero": {
+    "eyebrow": "Season 01 · Four voices · Zero humans",
+    "titleStart": "Meet the creators who ",
+    "titleEmphasis": "aren’t real.",
+    "titleEnd": " Their taste is.",
+    "subtitle": "Nonreal is a studio of virtual creators with their own voices, obsessions and daily feeds. Pick one, step into their world, and follow along on Telegram.",
+    "ctaCreators": "Meet the creators",
+    "ctaTelegram": "Follow on Telegram",
+    "followers": "2.2M followers across four creators"
+  },
+  "showcase": {
+    "title": "The lineup",
+    "hint": "Tap a creator to step inside"
+  },
+  "card": {
+    "open": "Open {name}’s profile"
+  },
+  "profile": {
+    "close": "Close {name} profile",
+    "followers": "Followers",
+    "posts": "Posts",
+    "engagement": "Engagement",
+    "ask": "Ask {name}",
+    "latestDrops": "Latest drops",
+    "follow": "Follow {name} on Telegram"
+  },
+  "cta": {
+    "titleStart": "Four feeds. ",
+    "titleEmphasis": "One channel.",
+    "body": "Daily drops from every creator, first access to new faces, and the occasional answer when you ask.",
+    "button": "Join on Telegram"
+  },
+  "footer": {
+    "legal": "© 2026 Nonreal Studio. All creators are fictional and AI-generated.",
+    "tagline": "Made with care, not with humans in front of the camera."
+  },
+  "creators": {
+    "kai": {
+      "category": "Tech & AI",
+      "tagline": "Tomorrow, decoded.",
+      "bio": "Ex-lab nerd turned explainer. Kai breaks down the week in AI into five minutes you can actually use, with no hype and no jargon.",
+      "alt": "Portrait of Kai Arden, a man in round glasses and a navy hoodie by a bright window",
+      "location": "Tallinn",
+      "tags": ["AI tools", "Gadgets", "Future of work"],
+      "ask": { "q": "Is my job safe?", "a": "Your tasks change, your job adapts. Learn the tool before it learns you." },
+      "posts": [
+        { "title": "The 5-minute stack", "body": "Three AI tools I keep on my dock. Everything else is noise.", "meta": "12.4K saves" },
+        { "title": "9 of 10", "body": "workflows I tested this month got faster. One got slower, and I explain why.", "meta": "Weekly teardown" },
+        { "title": "Hot take", "body": "Prompting is not a skill. Knowing what you want is.", "meta": "3.1K replies" }
+      ]
+    },
+    "mara": {
+      "category": "Travel & Adventure",
+      "tagline": "One carry-on. Zero itinerary.",
+      "bio": "Mara chases golden hour from Lisbon to Luang Prabang. Slow routes, local tables, and the trails the guidebooks skip.",
+      "alt": "Portrait of Mara Solé, a woman with long dark wavy hair in a mustard knit against a deep red wall",
+      "location": "Lisbon",
+      "tags": ["Slow travel", "Street food", "Hiking"],
+      "ask": { "q": "Where to this month?", "a": "Azores in October. Empty trails, hot springs and fish grilled at the harbour." },
+      "posts": [
+        { "title": "Fado at midnight", "body": "The best table in Alfama has no sign. Ask for Dona Rosa.", "meta": "24K saves" },
+        { "title": "€38 a day", "body": "Madeira on a budget, including the cable car and the cake.", "meta": "Route guide" },
+        { "title": "Packing rule", "body": "If it does not fit under the seat, it does not come.", "meta": "5.6K replies" }
+      ]
+    },
+    "dante": {
+      "category": "Fashion & Culture",
+      "tagline": "Dress like you mean it.",
+      "bio": "Milan-by-way-of-Lagos stylist who reads the street before the runway. Dante builds outfits from thrift racks, tailors and strong opinions.",
+      "alt": "Portrait of Dante Voss, a man in dark sunglasses and a cream overcoat standing at a window above Milan rooftops",
+      "location": "Milan",
+      "tags": ["Street style", "Vintage", "Tailoring"],
+      "ask": { "q": "One piece to buy?", "a": "A well-cut overcoat. Everything else is a supporting actor." },
+      "posts": [
+        { "title": "The €20 blazer", "body": "Thrifted, taken in 2cm, and now it looks like a custom suit.", "meta": "18K saves" },
+        { "title": "3 colours", "body": "is the whole wardrobe rule. Cream, ink and one loud thing.", "meta": "Style note" },
+        { "title": "Overheard in Brera", "body": "Quiet luxury is just good tailoring with a bad marketing budget.", "meta": "7.3K replies" }
+      ]
+    },
+    "iris": {
+      "category": "Wellness & Lifestyle",
+      "tagline": "Slower mornings, stronger days.",
+      "bio": "Iris designs small daily rituals: breath, light, movement and food that loves you back. Calm that fits into a busy week.",
+      "alt": "Portrait of Iris Calder, a woman with a blonde bun and white linen blouse against a sage-green backdrop",
+      "location": "Copenhagen",
+      "tags": ["Rituals", "Mobility", "Plant-based"],
+      "ask": { "q": "I can’t switch off.", "a": "Try 4-6 breathing for two minutes. Longer exhales tell your body it is safe." },
+      "posts": [
+        { "title": "The 10-minute reset", "body": "Window open, shoes off, one slow stretch. That is the whole routine.", "meta": "15K saves" },
+        { "title": "21 days", "body": "of a screen-free first hour. My sleep score changed, and so did my coffee.", "meta": "Ritual log" },
+        { "title": "Sunday pot", "body": "Lentils, lemon and whatever is wilting. Feeds me until Thursday.", "meta": "4.8K replies" }
+      ]
+    }
+  }
+}

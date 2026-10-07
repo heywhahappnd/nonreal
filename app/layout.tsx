@@ -1,33 +1,39 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Manrope } from 'next/font/google';
+import I18nProvider from '@/components/I18nProvider';
 import MotionProvider from '@/components/MotionProvider';
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, jsonLd } from '@/lib/site';
+import { createTranslator, defaultLocale, getMessages } from '@/lib/i18n';
+import { SITE_NAME, SITE_URL, buildJsonLd } from '@/lib/site';
 import './globals.css';
 
 const display = Fraunces({ subsets: ['latin'], variable: '--font-display' });
 const sans = Manrope({ subsets: ['latin'], variable: '--font-sans' });
 
-const title = 'Nonreal: four virtual creators worth following';
+const locale = defaultLocale;
+const messages = getMessages(locale);
+const t = createTranslator(messages);
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: title, template: `%s | ${SITE_NAME}` },
-  description: SITE_DESCRIPTION,
+  title: { default: t('meta.title'), template: `%s | ${SITE_NAME}` },
+  description: t('meta.description'),
   applicationName: SITE_NAME,
   keywords: ['AI creators', 'virtual influencers', 'AI influencers', 'Kai Arden', 'Mara Solé', 'Dante Voss', 'Iris Calder'],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
-  openGraph: { title, description: SITE_DESCRIPTION, url: '/', siteName: SITE_NAME, type: 'website', locale: 'en_US' },
-  twitter: { card: 'summary_large_image', title, description: SITE_DESCRIPTION },
+  openGraph: { title: t('meta.title'), description: t('meta.description'), url: '/', siteName: SITE_NAME, type: 'website', locale: 'en_US' },
+  twitter: { card: 'summary_large_image', title: t('meta.title'), description: t('meta.description') },
 };
 export const viewport: Viewport = { themeColor: '#F4EFE7', width: 'device-width', initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang={locale} className={`${display.variable} ${sans.variable}`}>
       <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <MotionProvider>{children}</MotionProvider>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(messages, locale)) }} />
+        <MotionProvider>
+          <I18nProvider locale={locale}>{children}</I18nProvider>
+        </MotionProvider>
       </body>
     </html>
   );

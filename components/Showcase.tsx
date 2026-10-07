@@ -1,11 +1,13 @@
 'use client';
 import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { creators, type Creator } from '@/lib/creators';
+import type { Creator } from '@/lib/creators';
 import CreatorCard from './CreatorCard';
 import CreatorProfile from './CreatorProfile';
+import { useTranslation } from './I18nProvider';
 
 export default function Showcase() {
+  const { t, creators } = useTranslation();
   const [active, setActive] = useState<Creator | null>(null);
   const trigger = useRef<HTMLElement | null>(null);
 
@@ -17,8 +19,8 @@ export default function Showcase() {
   return (
     <section id="creators" aria-labelledby="creators-title" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-10 md:py-16">
       <div className="mb-8 flex items-end justify-between">
-        <h2 id="creators-title" className="font-display text-3xl font-medium tracking-tight sm:text-4xl">The lineup</h2>
-        <p className="hidden text-sm text-mute sm:block">Tap a creator to step inside</p>
+        <h2 id="creators-title" className="font-display text-3xl font-medium tracking-tight sm:text-4xl">{t('showcase.title')}</h2>
+        <p className="hidden text-sm text-mute sm:block">{t('showcase.hint')}</p>
       </div>
       <motion.ul
         initial="hidden"
